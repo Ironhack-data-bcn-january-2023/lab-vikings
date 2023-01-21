@@ -9,13 +9,10 @@ class Soldier:
        
     
     def attack(self):
-        
         return self.strength
 
     def receiveDamage(self, damage):
         self.health -= damage 
-
-        return 
 
 # Viking
 
@@ -51,7 +48,6 @@ class Saxon (Soldier):
 
 class War():
     
-    
     def __init__(self):
         self.vikingArmy = []
         self.saxonArmy= []
@@ -71,20 +67,27 @@ class War():
     def vikingAttack(self):
         saxon = random.choice(self.saxonArmy)
         viking = random.choice(self.vikingArmy)
+        
+        attack = saxon.receiveDamage(viking.strength)
+
+        if saxon.health <= 0:
+            self.saxonArmy.remove(saxon)
+        
+        return attack
             
-        if Saxon.health <= 0:
-               del saxon
-            
-            
-     #saxon attack
+    #saxon attack
      
     def saxonAttack(self):
         
         saxon = random.choice(self.saxonArmy)
         viking = random.choice(self.vikingArmy)
-            
-        if Viking.health <= 0:
-               del viking
+
+        attack = viking.receiveDamage(saxon.strength)
+
+        if viking.health <= 0:
+            self.vikingArmy.remove(viking)
+
+        return attack
     
     #results
 
@@ -98,4 +101,3 @@ class War():
 
         if len(self.vikingArmy) and len(self.saxonArmy) != 0:
             return f"Vikings and Saxons are still in the thick of battle."
-
