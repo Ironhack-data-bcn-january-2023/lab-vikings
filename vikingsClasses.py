@@ -78,6 +78,7 @@ class War(Viking,Saxon):
         return output
 
     def saxonAttack(self):
+
         viking_i = random.choice(self.vikingArmy)
         saxon_i  = random.choice(self.saxonArmy)
         #viking_i = self.vikingArmy[random.randint(1,len(self.vikingArmy))]
